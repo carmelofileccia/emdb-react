@@ -5,7 +5,7 @@ import { Button } from "./../../components/Button";
 import { POST } from "./../../libs/http";
 import styles from "./style.module.scss";
 
-const Add = () => {
+const Add = (props) => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
@@ -20,6 +20,8 @@ const Add = () => {
     const movie = { title, year, poster, genres, description };
 
     await POST("/movies", movie);
+    props.editCallback();
+
     navigate("/");
   };
 

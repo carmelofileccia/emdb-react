@@ -1,0 +1,19 @@
+
+.alert {
+    // display: none;
+    padding: 0px 20px;
+    color: white;
+    background-color: forestgreen;
+    overflow: hidden;
+    height: 0;
+    transition: all 0.5s ease;
+}
+
+.visible {
+    // display: block;
+    height: 60px;
+}
+
+.visibleRed {
+    background-color: red;
+}

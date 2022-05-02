@@ -5,7 +5,7 @@ import { Button } from "./../../components/Button";
 import { GET, PUT, DELETE } from "./../../libs/http";
 import styles from "./style.module.scss";
 
-const Edit = () => {
+const Edit = (props) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -17,15 +17,18 @@ const Edit = () => {
 
   const submitData = async (event) => {
     event.preventDefault();
-
+    
     const movie = { title, year, poster, genres, description };
 
     await PUT("/movies", id, movie);
+    props.editCallback();
     navigate("/");
   };
-
+ 
   const deleteMovie = async () => {
     await DELETE("/movies", id);
+    props.delCallback();
+
     navigate("/");
   };
 
@@ -103,7 +106,7 @@ const Edit = () => {
         </Button>
 
         <Button type="button" danger={true} cb={deleteMovie}>
-          <FaTrash /> Delete movie
+          <FaTrash/> Delete movie
         </Button>
       </div>
     </form>
